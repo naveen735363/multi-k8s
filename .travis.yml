@@ -3,19 +3,19 @@ services:
   - docker
 
 before_install:
-  - docker build -t naveen735363/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t naveen108/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true naveen735363/react-test npm test
+  - docker run -e CI=true naveen108/react-test npm test
 
 after-success:
-  - docker build -t naveen735363/multi-client ./client
-  - docker build -t naveen735363/multi-nginx ./nginx
-  - docker build -t naveen735363/multi-server ./server
-  - docker build -t naveen735363/multi-worker ./worker
+  - docker build -t naveen108/multi-client ./client
+  - docker build -t naveen108/multi-nginx ./nginx
+  - docker build -t naveen108/multi-server ./server
+  - docker build -t naveen108/multi-worker ./worker
 
   - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD docker.io
-  - docker push naveen735363/multi-client
-  - docker push naveen735363/multi-nginx
-  - docker push naveen735363/multi-server
-  - docker push naveen735363/multi-worker
+  - docker push naveen108/multi-client
+  - docker push naveen108/multi-nginx
+  - docker push naveen108/multi-server
+  - docker push naveen108/multi-worker
